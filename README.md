@@ -114,6 +114,21 @@ print(meta.grades, meta.period_times, meta.week_ranges)
 - `TimetableError` — 잘못된 학교 코드·학년·반  
 - `ParseError` — `/st` 페이지 구조 변경
 
+## PyPI 배포 (maintainer)
+
+1. [PyPI](https://pypi.org) 계정 생성 후 API 토큰 발급  
+2. GitHub 저장소 **Settings → Secrets → `PYPI_API_TOKEN`** 등록  
+3. GitHub **Releases → v1.0.0** 생성 → Actions가 자동 업로드  
+
+수동 업로드:
+
+```bash
+pip install build twine
+python -m build
+twine upload dist/*
+# Username: __token__  Password: pypi-XXXX...
+```
+
 ## 라이선스
 
 **All Rights Reserved** — `LICENSE` 참고.  
