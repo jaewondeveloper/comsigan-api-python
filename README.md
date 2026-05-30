@@ -1,5 +1,11 @@
 # comsigan-api (Python)
 
+[![PyPI version](https://img.shields.io/pypi/v/comsigan?label=PyPI&logo=pypi&logoColor=white)](https://pypi.org/project/comsigan/)
+[![Python](https://img.shields.io/pypi/pyversions/comsigan?label=Python&logo=python&logoColor=white)](https://pypi.org/project/comsigan/)
+[![CI / Publish](https://github.com/jaewondeveloper/comsigan-api-python/actions/workflows/publish-pypi.yml/badge.svg)](https://github.com/jaewondeveloper/comsigan-api-python/actions/workflows/publish-pypi.yml)
+[![License](https://img.shields.io/badge/License-All%20Rights%20Reserved-red)](LICENSE)
+[![Copyright](https://img.shields.io/badge/Copyright-%C2%A9%202026%20jaewondeveloper-lightgrey)](LICENSE)
+
 [컴시간알리미](http://comci.net:4082/st) **학생 시간표** 페이지를 역공학한 비공식 Python 클라이언트입니다.
 
 - **GitHub**: https://github.com/jaewondeveloper/comsigan-api-python  
@@ -114,11 +120,16 @@ print(meta.grades, meta.period_times, meta.week_ranges)
 - `TimetableError` — 잘못된 학교 코드·학년·반  
 - `ParseError` — `/st` 페이지 구조 변경
 
-## PyPI 배포 (maintainer)
+## PyPI 자동 배포
 
-1. [PyPI](https://pypi.org) 계정 생성 후 API 토큰 발급  
-2. GitHub 저장소 **Settings → Secrets → `PYPI_API_TOKEN`** 등록  
-3. GitHub **Releases → v1.0.0** 생성 → Actions가 자동 업로드  
+`main` 브랜치에 코드가 push되면 GitHub Actions가 PyPI에 자동 업로드합니다.
+
+1. GitHub **Settings → Secrets → Actions**에 `PYPI_API_TOKEN` 등록 (PyPI API 토큰)
+2. `pyproject.toml`의 **`version`을 올린 뒤** push  
+   - PyPI는 같은 버전 재업로드가 불가능합니다 (예: `1.0.0` → `1.0.1`)
+3. Actions 탭에서 [Publish to PyPI](https://github.com/jaewondeveloper/comsigan-api-python/actions/workflows/publish-pypi.yml) 워크플로 확인
+
+트리거: `comsigan/**` 또는 `pyproject.toml` 변경 시 · Release 생성 시 · 수동 실행(`workflow_dispatch`)
 
 수동 업로드:
 
